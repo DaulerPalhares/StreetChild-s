@@ -45,7 +45,10 @@ public class ThirdPersonCamera : MonoBehaviour {
     private float targetingTime = 0.5f;
     [SerializeField]
     private float firstPersonThreshold = 0.5f;
-
+    [SerializeField]
+    private float firstPersonLookSpeed = 1.5f;
+    [SerializeField]
+    private Vector2 firstPersonXAxisClamp = new Vector2(-70.0f, 90.0f);
 
     //Smooth and damping the camera Moviment
     private Vector3 velocityCamSmooth = Vector3.zero;
@@ -64,6 +67,8 @@ public class ThirdPersonCamera : MonoBehaviour {
     #endregion
 
     #region Variables (public)
+
+    public CamStates CamState { get { return camState; } }
 
     public enum CamStates
     {
@@ -105,6 +110,7 @@ public class ThirdPersonCamera : MonoBehaviour {
         float leftY = Input.GetAxis("Vertical");
 
         Vector3 characterOffSet = followXForm.position + new Vector3(0f, distanceUp, 0f);
+        Vector3 lookAt = characterOffSet;
 
         //Determine the camera State
         if (Input.GetAxis("Target") > 0.01f)
@@ -134,16 +140,30 @@ public class ThirdPersonCamera : MonoBehaviour {
                 lookDir = characterOffSet - transform.position;
                 lookDir.y = 0;
                 lookDir.Normalize();
+                targetPosition = characterOffSet + followXForm.up * distanceUp - lookDir * distanceAway;
             break;
             case CamStates.Target:
                 lookDir = followXForm.forward;
+                targetPosition = characterOffSet + followXForm.up * distanceUp - lookDir * distanceAway;
             break;
             case CamStates.FirstPerson:
+                //Looking up and down
+                xAxisRot += (leftY * firstPersonLookSpeed);
+                xAxisRot = Mathf.Clamp(xAxisRot, firstPersonXAxisClamp.x, firstPersonXAxisClamp.y);
+                firstPersonCamPos.xForm.localRotation = Quaternion.Euler(xAxisRot, 0, 0);
+
+                Quaternion rotationShift = Quaternion.FromToRotation(transform.forward, firstPersonCamPos.xForm.forward);
+                transform.rotation = rotationShift * transform.rotation;
+
+                //Move the camera to FPV
+                targetPosition = firstPersonCamPos.xForm.position;
+                
+                lookAt = Vector3.Lerp(transform.position + transform.forward, lookAt, Vector3.Distance(transform.position, firstPersonCamPos.xForm.position));
 
             break;
         }
 
-        targetPosition = characterOffSet + followXForm.up * distanceUp - lookDir * distanceAway;
+
 
         Debug.DrawRay(followXForm.position, Vector3.up * distanceUp, Color.red);
         Debug.DrawRay(followXForm.position, -1f * followXForm.forward * distanceAway, Color.blue);
@@ -152,7 +172,7 @@ public class ThirdPersonCamera : MonoBehaviour {
         CompensateForWalls(characterOffSet, ref targetPosition);
         SmoothPosition(transform.position, targetPosition);
 
-        transform.LookAt(followXForm);
+        transform.LookAt(lookAt);
 
     }
 
