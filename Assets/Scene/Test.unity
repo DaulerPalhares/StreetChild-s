@@ -741,6 +741,7 @@ GameObject:
   - 92: {fileID: 1608073059}
   - 124: {fileID: 1608073058}
   - 81: {fileID: 1608073057}
+  - 114: {fileID: 1608073063}
   - 114: {fileID: 1608073062}
   m_Layer: 0
   m_Name: Main Camera
@@ -832,8 +833,23 @@ MonoBehaviour:
   distanceUp: 1
   smooth: 5
   followXForm: {fileID: 0}
-  offset: {x: 0, y: 1.5, z: 0}
+  wideScreen: 0.2
+  targetingTime: 0.5
   camSmoothDampTime: 0.1
+--- !u!114 &1608073063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1608073056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b86791125eb64428bc5ecd46be44d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: b137a02cd4cdeb14bb348fd07768c7b3, type: 3}
+  coverage: 0
+  barTexture: {fileID: 2800000, guid: 00bbc2ede9294e94aa83c0d75691dac2, type: 3}
 --- !u!1 &1624096791
 GameObject:
   m_ObjectHideFlags: 0
