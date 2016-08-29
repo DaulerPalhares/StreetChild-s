@@ -544,37 +544,25 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 448028, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 495908, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 152642, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
+      propertyPath: m_TagString
+      value: FPV
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &733784943
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 733784944}
-  m_Layer: 0
-  m_Name: FVP Follow
-  m_TagString: FPV
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &733784944
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 733784943}
-  m_LocalRotation: {x: 0.49999982, y: -0.50000095, z: 0.49999964, w: 0.4999997}
-  m_LocalPosition: {x: -0.0866, y: -0.0967, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 830895742}
-  m_RootOrder: 8
 --- !u!1 &738057299
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,10 +642,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
---- !u!4 &830895742 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 420338, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
-  m_PrefabInternal: {fileID: 426723634}
 --- !u!1 &1050664807
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,12 +853,12 @@ MonoBehaviour:
   distanceUp: 1
   smooth: 5
   followXForm: {fileID: 0}
-  transformFPV: {fileID: 0}
   wideScreen: 0.2
   targetingTime: 0.5
   firstPersonThreshold: 0.5
   firstPersonLookSpeed: 1.5
-  firstPersonXAxisClamp: {x: -70, y: 90}
+  fpsRotationDegreePerSecond: 120
+  firstPersonXAxisClamp: {x: -70, y: 65}
   camSmoothDampTime: 0.1
 --- !u!114 &1608073063
 MonoBehaviour:

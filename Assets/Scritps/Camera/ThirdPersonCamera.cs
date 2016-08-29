@@ -9,10 +9,12 @@ using UnityStandardAssets.Characters.ThirdPerson;
 struct CameraPosition
 {
     private Vector3 _position;
+    private Transform _oldPosition;
     private Transform _xForm;
 
     public Vector3 position { get { return _position; } set { _position = value; } }
     public Transform xForm { get { return _xForm; } set { _xForm = value; } }
+    public Transform oldPosition { get { return _oldPosition; } set { _oldPosition = value; } }
 
     public void Init(string camName, Vector3 pos, Transform transform, Transform parent)
     {
@@ -42,8 +44,6 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField]
     private Transform followXForm;
     [SerializeField]
-    private Transform transformFPV;
-    [SerializeField]
     private float wideScreen = 0.2f;
     [SerializeField]
     private float targetingTime = 0.5f;
@@ -52,7 +52,10 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField]
     private float firstPersonLookSpeed = 1.5f;
     [SerializeField]
-    private Vector2 firstPersonXAxisClamp = new Vector2(-70.0f, 90.0f);
+    private float fpsRotationDegreePerSecond = 120f;
+    [SerializeField]
+    private Vector2 firstPersonXAxisClamp = new Vector2(-70.0f, 65.0f);
+
 
     //Smooth and damping the camera Moviment
     private Vector3 velocityCamSmooth = Vector3.zero;
@@ -92,7 +95,6 @@ public class ThirdPersonCamera : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonUserControl>();
         player.m_CanMove = true;
         followXForm = GameObject.FindGameObjectWithTag("PlayerFollow").transform;
-        transformFPV = GameObject.FindGameObjectWithTag("FPV").transform;
         lookDir = followXForm.forward;
         barEffect = GetComponent<BarEffect>();
         if (!barEffect)
@@ -101,7 +103,7 @@ public class ThirdPersonCamera : MonoBehaviour
         }
 
         firstPersonCamPos = new CameraPosition();
-        firstPersonCamPos.Init("First Person Camera", new Vector3(0f, 1.6f, 0.2f), new GameObject().transform, transformFPV.transform);
+        firstPersonCamPos.Init("First Person Camera", new Vector3(0f, 1.4f, 0.2f), new GameObject().transform, player.transform);
 
     }
 
@@ -127,6 +129,7 @@ public class ThirdPersonCamera : MonoBehaviour
             barEffect.coverage = Mathf.SmoothStep(barEffect.coverage, 0, targetingTime);
             if (rightY > firstPersonThreshold || Input.GetMouseButtonDown(1))
             {
+                firstPersonCamPos.oldPosition = transform;
                 xAxisRot = 0;
                 lookWeight = 0;
                 camState = CamStates.FirstPerson;
@@ -140,6 +143,7 @@ public class ThirdPersonCamera : MonoBehaviour
         switch (camState)
         {
             case CamStates.Behind:
+                ResetCamera();
                 //Calcula a distancia entre o jogador e a camera, Seta o Y pra 0 e normaliza a a direçao
                 lookDir = characterOffSet - transform.position;
                 lookDir.y = 0;
@@ -148,19 +152,25 @@ public class ThirdPersonCamera : MonoBehaviour
                 player.m_CanMove = true;
                 break;
             case CamStates.Target:
+                ResetCamera();
                 lookDir = followXForm.forward;
                 targetPosition = characterOffSet + followXForm.up * distanceUp - lookDir * distanceAway;
                 player.m_CanMove = true;
                 break;
             case CamStates.FirstPerson:
+
                 //Looking up and down
                 xAxisRot += (leftY * firstPersonLookSpeed);
-                xAxisRot = Mathf.Clamp(xAxisRot, firstPersonXAxisClamp.x, firstPersonXAxisClamp.y);
+                xAxisRot = Mathf.Clamp(xAxisRot, firstPersonXAxisClamp.x, 65.0f);
                 firstPersonCamPos.xForm.localRotation = Quaternion.Euler(xAxisRot, 0, 0);
-                firstPersonCamPos.position = GameObject.FindGameObjectWithTag("FPV").transform.position;
 
                 Quaternion rotationShift = Quaternion.FromToRotation(transform.forward, firstPersonCamPos.xForm.forward);
                 transform.rotation = rotationShift * transform.rotation;
+
+                //Looking left and right
+                Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, fpsRotationDegreePerSecond * (leftX < 0f ? -1f : 1f), 0f), Mathf.Abs(leftX));
+                Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
+                player.transform.rotation = (player.transform.rotation * deltaRotation);
 
                 //Move the camera to FPV
                 targetPosition = firstPersonCamPos.xForm.position;
@@ -203,6 +213,12 @@ public class ThirdPersonCamera : MonoBehaviour
             Debug.DrawRay(wallHit.point, Vector3.left, Color.red);
             toTarget = new Vector3(wallHit.point.x, toTarget.y, wallHit.point.z);
         }
+    }
+
+    private void ResetCamera()
+    {
+        lookWeight = Mathf.Lerp(lookWeight, 0.0f, Time.deltaTime * firstPersonLookSpeed);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.identity, Time.deltaTime);
     }
 
     #endregion
