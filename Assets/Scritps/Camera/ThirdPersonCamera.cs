@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.ThirdPerson;
-/// <summary>
+/// <summary>   
 /// Struct to hold data for aligning camera
 /// </summary>
 
@@ -109,88 +109,91 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        //Inputs To move the camera in first person camera
-        float rightX = Input.GetAxis("RightStickX");
-        float rightY = Input.GetAxis("RightStickY");
-        float leftX = Input.GetAxis("Horizontal");
-        float leftY = Input.GetAxis("Vertical");
-
-        Vector3 characterOffSet = followXForm.position + new Vector3(0f, distanceUp, 0f);
-        Vector3 lookAt = characterOffSet;
-
-        //Determine the camera State
-        if (Input.GetAxis("Target") > 0.01f)
+        if (!GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControllerScript>().showInventory)
         {
-            barEffect.coverage = Mathf.SmoothStep(barEffect.coverage, wideScreen, targetingTime);
-            camState = CamStates.Target;
-        }
-        else
-        {
-            barEffect.coverage = Mathf.SmoothStep(barEffect.coverage, 0, targetingTime);
-            if (rightY > firstPersonThreshold || Input.GetMouseButtonDown(1))
+            //Inputs To move the camera in first person camera
+            float rightX = Input.GetAxis("RightStickX");
+            float rightY = Input.GetAxis("RightStickY");
+            float leftX = Input.GetAxis("Horizontal");
+            float leftY = Input.GetAxis("Vertical");
+
+            Vector3 characterOffSet = followXForm.position + new Vector3(0f, distanceUp, 0f);
+            Vector3 lookAt = characterOffSet;
+
+            //Determine the camera State
+            if (Input.GetAxis("Target") > 0.01f)
             {
-                firstPersonCamPos.oldPosition = transform;
-                xAxisRot = 0;
-                lookWeight = 0;
-                camState = CamStates.FirstPerson;
+                barEffect.coverage = Mathf.SmoothStep(barEffect.coverage, wideScreen, targetingTime);
+                camState = CamStates.Target;
             }
-            if ((camState == CamStates.FirstPerson && Input.GetButton("ExitFPV")) || Input.GetMouseButtonUp(1))
+            else
             {
-                camState = CamStates.Behind;
+                barEffect.coverage = Mathf.SmoothStep(barEffect.coverage, 0, targetingTime);
+                if (rightY > firstPersonThreshold || Input.GetMouseButtonDown(1))
+                {
+                    firstPersonCamPos.oldPosition = transform;
+                    xAxisRot = 0;
+                    lookWeight = 0;
+                    camState = CamStates.FirstPerson;
+                }
+                if ((camState == CamStates.FirstPerson && Input.GetButton("ExitFPV")) || Input.GetMouseButtonUp(1))
+                {
+                    camState = CamStates.Behind;
+                }
             }
+
+            switch (camState)
+            {
+                case CamStates.Behind:
+                    ResetCamera();
+                    //Calcula a distancia entre o jogador e a camera, Seta o Y pra 0 e normaliza a a direçao
+                    lookDir = characterOffSet - transform.position;
+                    lookDir.y = 0;
+                    lookDir.Normalize();
+                    targetPosition = characterOffSet + followXForm.up * distanceUp - lookDir * distanceAway;
+                    player.m_CanMove = true;
+                    break;
+                case CamStates.Target:
+                    ResetCamera();
+                    lookDir = followXForm.forward;
+                    targetPosition = characterOffSet + followXForm.up * distanceUp - lookDir * distanceAway;
+                    player.m_CanMove = true;
+                    break;
+                case CamStates.FirstPerson:
+
+                    //Looking up and down
+                    xAxisRot += (leftY * firstPersonLookSpeed);
+                    xAxisRot = Mathf.Clamp(xAxisRot, firstPersonXAxisClamp.x, 65.0f);
+                    firstPersonCamPos.xForm.localRotation = Quaternion.Euler(xAxisRot, 0, 0);
+
+                    Quaternion rotationShift = Quaternion.FromToRotation(transform.forward, firstPersonCamPos.xForm.forward);
+                    transform.rotation = rotationShift * transform.rotation;
+
+                    //Looking left and right
+                    Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, fpsRotationDegreePerSecond * (leftX < 0f ? -1f : 1f), 0f), Mathf.Abs(leftX));
+                    Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
+                    player.transform.rotation = (player.transform.rotation * deltaRotation);
+
+                    //Move the camera to FPV
+                    targetPosition = firstPersonCamPos.xForm.position;
+
+                    lookAt = Vector3.Lerp(transform.position + transform.forward, lookAt, Vector3.Distance(transform.position, firstPersonCamPos.xForm.position));
+                    player.m_CanMove = false;
+                    break;
+
+            }
+
+
+
+            Debug.DrawRay(followXForm.position, Vector3.up * distanceUp, Color.red);
+            Debug.DrawRay(followXForm.position, -1f * followXForm.forward * distanceAway, Color.blue);
+            Debug.DrawLine(followXForm.position, targetPosition, Color.magenta);
+
+            CompensateForWalls(characterOffSet, ref targetPosition);
+            SmoothPosition(transform.position, targetPosition);
+
+            transform.LookAt(lookAt);
         }
-
-        switch (camState)
-        {
-            case CamStates.Behind:
-                ResetCamera();
-                //Calcula a distancia entre o jogador e a camera, Seta o Y pra 0 e normaliza a a direçao
-                lookDir = characterOffSet - transform.position;
-                lookDir.y = 0;
-                lookDir.Normalize();
-                targetPosition = characterOffSet + followXForm.up * distanceUp - lookDir * distanceAway;
-                player.m_CanMove = true;
-                break;
-            case CamStates.Target:
-                ResetCamera();
-                lookDir = followXForm.forward;
-                targetPosition = characterOffSet + followXForm.up * distanceUp - lookDir * distanceAway;
-                player.m_CanMove = true;
-                break;
-            case CamStates.FirstPerson:
-
-                //Looking up and down
-                xAxisRot += (leftY * firstPersonLookSpeed);
-                xAxisRot = Mathf.Clamp(xAxisRot, firstPersonXAxisClamp.x, 65.0f);
-                firstPersonCamPos.xForm.localRotation = Quaternion.Euler(xAxisRot, 0, 0);
-
-                Quaternion rotationShift = Quaternion.FromToRotation(transform.forward, firstPersonCamPos.xForm.forward);
-                transform.rotation = rotationShift * transform.rotation;
-
-                //Looking left and right
-                Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, fpsRotationDegreePerSecond * (leftX < 0f ? -1f : 1f), 0f), Mathf.Abs(leftX));
-                Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
-                player.transform.rotation = (player.transform.rotation * deltaRotation);
-
-                //Move the camera to FPV
-                targetPosition = firstPersonCamPos.xForm.position;
-
-                lookAt = Vector3.Lerp(transform.position + transform.forward, lookAt, Vector3.Distance(transform.position, firstPersonCamPos.xForm.position));
-                player.m_CanMove = false;
-                break;
-        }
-
-
-
-        Debug.DrawRay(followXForm.position, Vector3.up * distanceUp, Color.red);
-        Debug.DrawRay(followXForm.position, -1f * followXForm.forward * distanceAway, Color.blue);
-        Debug.DrawLine(followXForm.position, targetPosition, Color.magenta);
-
-        CompensateForWalls(characterOffSet, ref targetPosition);
-        SmoothPosition(transform.position, targetPosition);
-
-        transform.LookAt(lookAt);
-
     }
 
     #endregion
