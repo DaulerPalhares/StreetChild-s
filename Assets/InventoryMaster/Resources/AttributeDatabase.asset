@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Name: AttributeDatabase
   m_EditorClassIdentifier: 
   itemAttributeList:
-  - attributeName: 41726d6f72
+  - attributeName: None
     attributeValue: 0
-  - attributeName: 4865616c7468
+  - attributeName: Evasion
     attributeValue: 0
-  - attributeName: 4d616e61
+  - attributeName: Damage
     attributeValue: 0
-  - attributeName: 41726d6f72
+  - attributeName: Crit
     attributeValue: 0
-  - attributeName: 44616d616765
+  - attributeName: Health
     attributeValue: 0
-  - attributeName: 536c6f7473
+  - attributeName: Stamina
+    attributeValue: 0
+  - attributeName: Defense
     attributeValue: 0

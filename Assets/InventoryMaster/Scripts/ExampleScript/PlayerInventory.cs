@@ -18,10 +18,14 @@ public class PlayerInventory : PlayerStats
 
     public GameObject HPMANACanvas;
 
+    [SerializeField]
     Text hpText;
-    Text manaText;
+    [SerializeField]
+    Text staminaText;
+    [SerializeField]
     Image hpImage;
-    Image manaImage;
+    [SerializeField]
+    Image staminaImage;
 
     int normalSize = 3;
 
@@ -147,18 +151,11 @@ public class PlayerInventory : PlayerStats
 
     void Start()
     {
-        //if (HPMANACanvas != null)
-        //{
-        //    hpText = HPMANACanvas.transform.GetChild(1).GetChild(0).GetComponent<Text>();
-
-        //    manaText = HPMANACanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
-
-        //    hpImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
-        //    manaImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
-
-        //    UpdateHPBar();
-        //    UpdateManaBar();
-        //}
+        if (HPMANACanvas != null)
+        { 
+            UpdateHPBar();
+            UpdateManaBar();
+        }
 
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
@@ -176,19 +173,35 @@ public class PlayerInventory : PlayerStats
             craftSystemInventory = craftSystem.GetComponent<Inventory>();
     }
 
-    //void UpdateHPBar()
-    //{
-    //    hpText.text = (currentHealth + "/" + maxHealth);
-    //    float fillAmount = currentHealth / maxHealth;
-    //    hpImage.fillAmount = fillAmount;
-    //}
+    void UpdateHPBar()
+    {
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        if (currentHealth < 0)
+        {
+            currentHealth = 0;
+        }
+        hpText.text = (currentHealth + "/" + maxHealth);
+        float fillAmount = currentHealth / maxHealth;
+        hpImage.fillAmount = fillAmount;
+    }
 
-    //void UpdateManaBar()
-    //{
-    //    manaText.text = (currentMana + "/" + maxMana);
-    //    float fillAmount = currentMana / maxMana;
-    //    manaImage.fillAmount = fillAmount;
-    //}
+    void UpdateManaBar()
+    {
+        if(currentStamina > maxStamina)
+        {
+            currentStamina = maxStamina;
+        }
+        if (currentStamina < 0  )
+        {
+            currentStamina = 0;
+        }
+        staminaText.text = (currentStamina + "/" + maxStamina);
+        float fillAmount = currentStamina / maxStamina;
+        staminaImage.fillAmount = fillAmount;
+    }
 
 
     public void OnConsumeItem(Item item)
@@ -202,12 +215,12 @@ public class PlayerInventory : PlayerStats
                 else
                     currentHealth += item.itemAttributes[i].attributeValue;
             }
-            if (item.itemAttributes[i].attributeName == "Mana")
+            if (item.itemAttributes[i].attributeName == "Stamina")
             {
-                if ((currentMana + item.itemAttributes[i].attributeValue) > maxMana)
-                    currentMana = maxMana;
+                if ((currentStamina + item.itemAttributes[i].attributeValue) > maxStamina)
+                    currentStamina = maxStamina;
                 else
-                    currentMana += item.itemAttributes[i].attributeValue;
+                    currentStamina += item.itemAttributes[i].attributeValue;
             }
             if (item.itemAttributes[i].attributeName == "Armor")
             {
@@ -224,11 +237,11 @@ public class PlayerInventory : PlayerStats
                     currentDamage += item.itemAttributes[i].attributeValue;
             }
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
+        if (HPMANACanvas != null)
+        {
+            UpdateManaBar();
+            UpdateHPBar();
+        }
     }
 
     public void OnGearItem(Item item)
@@ -237,18 +250,18 @@ public class PlayerInventory : PlayerStats
         {
             if (item.itemAttributes[i].attributeName == "Health")
                 maxHealth += item.itemAttributes[i].attributeValue;
-            if (item.itemAttributes[i].attributeName == "Mana")
-                maxMana += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Stamina")
+                maxStamina += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 maxArmor += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
                 maxDamage += item.itemAttributes[i].attributeValue;
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
+        if (HPMANACanvas != null)
+        {
+            UpdateManaBar();
+            UpdateHPBar();
+        }
     }
 
     public void OnUnEquipItem(Item item)
@@ -257,18 +270,18 @@ public class PlayerInventory : PlayerStats
         {
             if (item.itemAttributes[i].attributeName == "Health")
                 maxHealth -= item.itemAttributes[i].attributeValue;
-            if (item.itemAttributes[i].attributeName == "Mana")
-                maxMana -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Stamina")
+                maxStamina -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 maxArmor -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
                 maxDamage -= item.itemAttributes[i].attributeValue;
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
+        if (HPMANACanvas != null)
+        {
+            UpdateManaBar();
+            UpdateHPBar();
+        }
     }
 
 
@@ -276,6 +289,8 @@ public class PlayerInventory : PlayerStats
     // Update is called once per frame
     void Update()
     {
+        UpdateManaBar();
+        UpdateHPBar();
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
         {
             if (!characterSystem.activeSelf)
