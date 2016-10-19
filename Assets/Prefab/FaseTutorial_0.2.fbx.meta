@@ -1,0 +1,555 @@
+fileFormatVersion: 2
+guid: 598a7961cee12114eabcb0b56ac5ddb9
+timeCreated: 1473873366
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_L
+    100002: Arm_L 1
+    100004: Arm_L.Target
+    100006: Arm_L.Target 1
+    100008: Arm_L.Target_end
+    100010: Arm_L.Target_end 1
+    100012: Arm_R
+    100014: Arm_R 1
+    100016: Arm_R.Target
+    100018: Arm_R.Target 1
+    100020: Arm_R.Target_end
+    100022: Arm_R.Target_end 1
+    100024: Belly
+    100026: Belly 1
+    100028: Bola de papel.001
+    100030: Caixa empurravel
+    100032: Caixa empurravel.001
+    100034: Chao
+    100036: Chest
+    100038: Chest 1
+    100040: Dumpster
+    100042: Escada
+    100044: Escada.001
+    100046: Escada.004
+    100048: //RootNode
+    100050: Father
+    100052: Father 1
+    100054: Finger_L_1_1
+    100056: Finger_L_1_1 1
+    100058: Finger_L_1_2
+    100060: Finger_L_1_2 1
+    100062: Finger_L_1_3
+    100064: Finger_L_1_3 1
+    100066: Finger_L_1_3_end
+    100068: Finger_L_1_3_end 1
+    100070: Finger_L_2_1
+    100072: Finger_L_2_1 1
+    100074: Finger_L_2_2
+    100076: Finger_L_2_2 1
+    100078: Finger_L_2_3
+    100080: Finger_L_2_3 1
+    100082: Finger_L_2_3_end
+    100084: Finger_L_2_3_end 1
+    100086: Finger_L_3_1
+    100088: Finger_L_3_1 1
+    100090: Finger_L_3_2
+    100092: Finger_L_3_2 1
+    100094: Finger_L_3_3
+    100096: Finger_L_3_3 1
+    100098: Finger_L_3_3_end
+    100100: Finger_L_3_3_end 1
+    100102: Finger_L_4_1
+    100104: Finger_L_4_1 1
+    100106: Finger_L_4_2
+    100108: Finger_L_4_2 1
+    100110: Finger_L_4_3
+    100112: Finger_L_4_3 1
+    100114: Finger_L_4_3_end
+    100116: Finger_L_4_3_end 1
+    100118: Finger_L_5_1
+    100120: Finger_L_5_1 1
+    100122: Finger_L_5_2
+    100124: Finger_L_5_2 1
+    100126: Finger_L_5_3
+    100128: Finger_L_5_3 1
+    100130: Finger_L_5_3_end
+    100132: Finger_L_5_3_end 1
+    100134: Finger_R_1_1
+    100136: Finger_R_1_1 1
+    100138: Finger_R_1_2
+    100140: Finger_R_1_2 1
+    100142: Finger_R_1_3
+    100144: Finger_R_1_3 1
+    100146: Finger_R_1_3_end
+    100148: Finger_R_1_3_end 1
+    100150: Finger_R_2_1
+    100152: Finger_R_2_1 1
+    100154: Finger_R_2_2
+    100156: Finger_R_2_2 1
+    100158: Finger_R_2_3
+    100160: Finger_R_2_3 1
+    100162: Finger_R_2_3_end
+    100164: Finger_R_2_3_end 1
+    100166: Finger_R_3_1
+    100168: Finger_R_3_1 1
+    100170: Finger_R_3_2
+    100172: Finger_R_3_2 1
+    100174: Finger_R_3_3
+    100176: Finger_R_3_3 1
+    100178: Finger_R_3_3_end
+    100180: Finger_R_3_3_end 1
+    100182: Finger_R_4_1
+    100184: Finger_R_4_1 1
+    100186: Finger_R_4_2
+    100188: Finger_R_4_2 1
+    100190: Finger_R_4_3
+    100192: Finger_R_4_3 1
+    100194: Finger_R_4_3_end
+    100196: Finger_R_4_3_end 1
+    100198: Finger_R_5_1
+    100200: Finger_R_5_1 1
+    100202: Finger_R_5_2
+    100204: Finger_R_5_2 1
+    100206: Finger_R_5_3
+    100208: Finger_R_5_3 1
+    100210: Finger_R_5_3_end
+    100212: Finger_R_5_3_end 1
+    100214: Foot_L
+    100216: Foot_L 1
+    100218: Foot_R
+    100220: Foot_R 1
+    100222: FootTip_L
+    100224: FootTip_L 1
+    100226: FootTip_L_end
+    100228: FootTip_L_end 1
+    100230: FootTip_R
+    100232: FootTip_R 1
+    100234: FootTip_R_end
+    100236: FootTip_R_end 1
+    100238: Forearm_L
+    100240: Forearm_L 1
+    100242: Forearm_R
+    100244: Forearm_R 1
+    100246: GradeFechada
+    100248: GradeFechada.001
+    100250: GradeFechada.002
+    100252: Head
+    100254: Head 1
+    100256: Head_end
+    100258: Head_end 1
+    100260: Hip_Center
+    100262: Hip_Center 1
+    100264: Hip_L
+    100266: Hip_L 1
+    100268: Hip_R
+    100270: Hip_R 1
+    100272: LowerCloth_L_1
+    100274: LowerCloth_L_1 1
+    100276: LowerCloth_L_2
+    100278: LowerCloth_L_2 1
+    100280: LowerCloth_L_2_end
+    100282: LowerCloth_L_2_end 1
+    100284: LowerCloth_R_1
+    100286: LowerCloth_R_1 1
+    100288: LowerCloth_R_2
+    100290: LowerCloth_R_2 1
+    100292: LowerCloth_R_2_end
+    100294: LowerCloth_R_2_end 1
+    100296: Neck
+    100298: Neck 1
+    100300: Oudalah
+    100302: Oudalah.001
+    100304: Oudallah
+    100306: Oudallah.001
+    100308: Paredes
+    100310: Personagem referencia
+    100312: Personagem referencia.001
+    100314: Personagem referencia.002
+    100316: Personagem referencia.003
+    100318: Shin_L
+    100320: Shin_L 1
+    100322: Shin_L.Target
+    100324: Shin_L.Target 1
+    100326: Shin_L.Target_end
+    100328: Shin_L.Target_end 1
+    100330: Shin_R
+    100332: Shin_R 1
+    100334: Shin_R.Target
+    100336: Shin_R.Target 1
+    100338: Shin_R.Target_end
+    100340: Shin_R.Target_end 1
+    100342: Shoulder_L
+    100344: Shoulder_L 1
+    100346: Shoulder_R
+    100348: Shoulder_R 1
+    100350: Shoulders spin
+    100352: Shoulders spin 1
+    100354: Thigh_L
+    100356: Thigh_L 1
+    100358: Thigh_L.Target
+    100360: Thigh_L.Target 1
+    100362: Thigh_L.Target_end
+    100364: Thigh_L.Target_end 1
+    100366: Thigh_R
+    100368: Thigh_R 1
+    100370: Thigh_R.Target
+    100372: Thigh_R.Target 1
+    100374: Thigh_R.Target_end
+    100376: Thigh_R.Target_end 1
+    100378: UpperCloth_B_1
+    100380: UpperCloth_B_1 1
+    100382: UpperCloth_B_2
+    100384: UpperCloth_B_2 1
+    100386: UpperCloth_B_2_end
+    100388: UpperCloth_B_2_end 1
+    100390: UpperCloth_F_1
+    100392: UpperCloth_F_1 1
+    100394: UpperCloth_F_2
+    100396: UpperCloth_F_2 1
+    100398: UpperCloth_F_2_end
+    100400: UpperCloth_F_2_end 1
+    100402: Varal
+    100404: Wrist_L
+    100406: Wrist_L 1
+    100408: Wrist_L.Target
+    100410: Wrist_L.Target 1
+    100412: Wrist_L.Target_end
+    100414: Wrist_L.Target_end 1
+    100416: Wrist_R
+    100418: Wrist_R 1
+    100420: Wrist_R.Target
+    100422: Wrist_R.Target 1
+    100424: Wrist_R.Target_end
+    100426: Wrist_R.Target_end 1
+    400000: Arm_L
+    400002: Arm_L 1
+    400004: Arm_L.Target
+    400006: Arm_L.Target 1
+    400008: Arm_L.Target_end
+    400010: Arm_L.Target_end 1
+    400012: Arm_R
+    400014: Arm_R 1
+    400016: Arm_R.Target
+    400018: Arm_R.Target 1
+    400020: Arm_R.Target_end
+    400022: Arm_R.Target_end 1
+    400024: Belly
+    400026: Belly 1
+    400028: Bola de papel.001
+    400030: Caixa empurravel
+    400032: Caixa empurravel.001
+    400034: Chao
+    400036: Chest
+    400038: Chest 1
+    400040: Dumpster
+    400042: Escada
+    400044: Escada.001
+    400046: Escada.004
+    400048: //RootNode
+    400050: Father
+    400052: Father 1
+    400054: Finger_L_1_1
+    400056: Finger_L_1_1 1
+    400058: Finger_L_1_2
+    400060: Finger_L_1_2 1
+    400062: Finger_L_1_3
+    400064: Finger_L_1_3 1
+    400066: Finger_L_1_3_end
+    400068: Finger_L_1_3_end 1
+    400070: Finger_L_2_1
+    400072: Finger_L_2_1 1
+    400074: Finger_L_2_2
+    400076: Finger_L_2_2 1
+    400078: Finger_L_2_3
+    400080: Finger_L_2_3 1
+    400082: Finger_L_2_3_end
+    400084: Finger_L_2_3_end 1
+    400086: Finger_L_3_1
+    400088: Finger_L_3_1 1
+    400090: Finger_L_3_2
+    400092: Finger_L_3_2 1
+    400094: Finger_L_3_3
+    400096: Finger_L_3_3 1
+    400098: Finger_L_3_3_end
+    400100: Finger_L_3_3_end 1
+    400102: Finger_L_4_1
+    400104: Finger_L_4_1 1
+    400106: Finger_L_4_2
+    400108: Finger_L_4_2 1
+    400110: Finger_L_4_3
+    400112: Finger_L_4_3 1
+    400114: Finger_L_4_3_end
+    400116: Finger_L_4_3_end 1
+    400118: Finger_L_5_1
+    400120: Finger_L_5_1 1
+    400122: Finger_L_5_2
+    400124: Finger_L_5_2 1
+    400126: Finger_L_5_3
+    400128: Finger_L_5_3 1
+    400130: Finger_L_5_3_end
+    400132: Finger_L_5_3_end 1
+    400134: Finger_R_1_1
+    400136: Finger_R_1_1 1
+    400138: Finger_R_1_2
+    400140: Finger_R_1_2 1
+    400142: Finger_R_1_3
+    400144: Finger_R_1_3 1
+    400146: Finger_R_1_3_end
+    400148: Finger_R_1_3_end 1
+    400150: Finger_R_2_1
+    400152: Finger_R_2_1 1
+    400154: Finger_R_2_2
+    400156: Finger_R_2_2 1
+    400158: Finger_R_2_3
+    400160: Finger_R_2_3 1
+    400162: Finger_R_2_3_end
+    400164: Finger_R_2_3_end 1
+    400166: Finger_R_3_1
+    400168: Finger_R_3_1 1
+    400170: Finger_R_3_2
+    400172: Finger_R_3_2 1
+    400174: Finger_R_3_3
+    400176: Finger_R_3_3 1
+    400178: Finger_R_3_3_end
+    400180: Finger_R_3_3_end 1
+    400182: Finger_R_4_1
+    400184: Finger_R_4_1 1
+    400186: Finger_R_4_2
+    400188: Finger_R_4_2 1
+    400190: Finger_R_4_3
+    400192: Finger_R_4_3 1
+    400194: Finger_R_4_3_end
+    400196: Finger_R_4_3_end 1
+    400198: Finger_R_5_1
+    400200: Finger_R_5_1 1
+    400202: Finger_R_5_2
+    400204: Finger_R_5_2 1
+    400206: Finger_R_5_3
+    400208: Finger_R_5_3 1
+    400210: Finger_R_5_3_end
+    400212: Finger_R_5_3_end 1
+    400214: Foot_L
+    400216: Foot_L 1
+    400218: Foot_R
+    400220: Foot_R 1
+    400222: FootTip_L
+    400224: FootTip_L 1
+    400226: FootTip_L_end
+    400228: FootTip_L_end 1
+    400230: FootTip_R
+    400232: FootTip_R 1
+    400234: FootTip_R_end
+    400236: FootTip_R_end 1
+    400238: Forearm_L
+    400240: Forearm_L 1
+    400242: Forearm_R
+    400244: Forearm_R 1
+    400246: GradeFechada
+    400248: GradeFechada.001
+    400250: GradeFechada.002
+    400252: Head
+    400254: Head 1
+    400256: Head_end
+    400258: Head_end 1
+    400260: Hip_Center
+    400262: Hip_Center 1
+    400264: Hip_L
+    400266: Hip_L 1
+    400268: Hip_R
+    400270: Hip_R 1
+    400272: LowerCloth_L_1
+    400274: LowerCloth_L_1 1
+    400276: LowerCloth_L_2
+    400278: LowerCloth_L_2 1
+    400280: LowerCloth_L_2_end
+    400282: LowerCloth_L_2_end 1
+    400284: LowerCloth_R_1
+    400286: LowerCloth_R_1 1
+    400288: LowerCloth_R_2
+    400290: LowerCloth_R_2 1
+    400292: LowerCloth_R_2_end
+    400294: LowerCloth_R_2_end 1
+    400296: Neck
+    400298: Neck 1
+    400300: Oudalah
+    400302: Oudalah.001
+    400304: Oudallah
+    400306: Oudallah.001
+    400308: Paredes
+    400310: Personagem referencia
+    400312: Personagem referencia.001
+    400314: Personagem referencia.002
+    400316: Personagem referencia.003
+    400318: Shin_L
+    400320: Shin_L 1
+    400322: Shin_L.Target
+    400324: Shin_L.Target 1
+    400326: Shin_L.Target_end
+    400328: Shin_L.Target_end 1
+    400330: Shin_R
+    400332: Shin_R 1
+    400334: Shin_R.Target
+    400336: Shin_R.Target 1
+    400338: Shin_R.Target_end
+    400340: Shin_R.Target_end 1
+    400342: Shoulder_L
+    400344: Shoulder_L 1
+    400346: Shoulder_R
+    400348: Shoulder_R 1
+    400350: Shoulders spin
+    400352: Shoulders spin 1
+    400354: Thigh_L
+    400356: Thigh_L 1
+    400358: Thigh_L.Target
+    400360: Thigh_L.Target 1
+    400362: Thigh_L.Target_end
+    400364: Thigh_L.Target_end 1
+    400366: Thigh_R
+    400368: Thigh_R 1
+    400370: Thigh_R.Target
+    400372: Thigh_R.Target 1
+    400374: Thigh_R.Target_end
+    400376: Thigh_R.Target_end 1
+    400378: UpperCloth_B_1
+    400380: UpperCloth_B_1 1
+    400382: UpperCloth_B_2
+    400384: UpperCloth_B_2 1
+    400386: UpperCloth_B_2_end
+    400388: UpperCloth_B_2_end 1
+    400390: UpperCloth_F_1
+    400392: UpperCloth_F_1 1
+    400394: UpperCloth_F_2
+    400396: UpperCloth_F_2 1
+    400398: UpperCloth_F_2_end
+    400400: UpperCloth_F_2_end 1
+    400402: Varal
+    400404: Wrist_L
+    400406: Wrist_L 1
+    400408: Wrist_L.Target
+    400410: Wrist_L.Target 1
+    400412: Wrist_L.Target_end
+    400414: Wrist_L.Target_end 1
+    400416: Wrist_R
+    400418: Wrist_R 1
+    400420: Wrist_R.Target
+    400422: Wrist_R.Target 1
+    400424: Wrist_R.Target_end
+    400426: Wrist_R.Target_end 1
+    2300000: Bola de papel.001
+    2300002: Caixa empurravel
+    2300004: Caixa empurravel.001
+    2300006: Chao
+    2300008: Dumpster
+    2300010: Escada
+    2300012: Escada.001
+    2300014: Escada.004
+    2300016: GradeFechada
+    2300018: GradeFechada.001
+    2300020: GradeFechada.002
+    2300022: Paredes
+    2300024: Personagem referencia
+    2300026: Personagem referencia.001
+    2300028: Personagem referencia.002
+    2300030: Personagem referencia.003
+    2300032: Varal
+    3300000: Bola de papel.001
+    3300002: Caixa empurravel
+    3300004: Caixa empurravel.001
+    3300006: Chao
+    3300008: Dumpster
+    3300010: Escada
+    3300012: Escada.001
+    3300014: Escada.004
+    3300016: GradeFechada
+    3300018: GradeFechada.001
+    3300020: GradeFechada.002
+    3300022: Paredes
+    3300024: Personagem referencia
+    3300026: Personagem referencia.001
+    3300028: Personagem referencia.002
+    3300030: Personagem referencia.003
+    3300032: Varal
+    4300000: Oudalah.001
+    4300002: Personagem referencia.003
+    4300004: GradeFechada.002
+    4300006: Personagem referencia.002
+    4300008: Escada.001
+    4300010: GradeFechada.001
+    4300012: Caixa empurravel.001
+    4300014: Personagem referencia.001
+    4300016: Bola de papel.001
+    4300018: Escada.004
+    4300020: Varal
+    4300022: Escada
+    4300024: Caixa empurravel
+    4300026: GradeFechada
+    4300028: Personagem referencia
+    4300030: Chao
+    4300032: Paredes
+    4300034: Dumpster
+    4300036: Oudalah
+    9500000: //RootNode
+    13700000: Oudalah
+    13700002: Oudalah.001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

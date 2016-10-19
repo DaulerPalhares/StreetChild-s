@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.IO;
 
-public class Controlador : MonoBehaviour {
+public class ControladorDauler : MonoBehaviour {
 
     #region Private Vars
     private int score;
@@ -11,19 +11,9 @@ public class Controlador : MonoBehaviour {
     #endregion
 
     #region Public Vars
-    /// <summary>
-    /// Singleton Simples
-    /// </summary>
-    public static Controlador controlador;
-
     public int _score { get { return score; } }
     public int _faseAtual { get { return faseAtual; } }
     #endregion
-
-    void Awake()
-    {
-        controlador = GetComponent<Controlador>();
-    }
 
     public void SetScore(int x)
     {
