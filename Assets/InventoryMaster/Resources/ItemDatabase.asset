@@ -42,3 +42,99 @@ MonoBehaviour:
       attributeValue: 3
     - attributeName: Stamina
       attributeValue: 4
+  - itemName: Comida
+    itemID: 2
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: a4d3f378d1a88f346af15ee906321f2a, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: Shoe
+    itemID: 3
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 3677eacbc4390644e97df27f50b96587, type: 3}
+    itemModel: {fileID: 0}
+    itemValue: 1
+    itemType: 5
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: Chest
+    itemID: 4
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: fcd8bd2db18e92d42a7d14fc0e395888, type: 3}
+    itemModel: {fileID: 0}
+    itemValue: 1
+    itemType: 6
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: Ear
+    itemID: 5
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 6181a838cc0f68041be2ad979199897c, type: 3}
+    itemModel: {fileID: 0}
+    itemValue: 1
+    itemType: 8
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: Necklace
+    itemID: 6
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 4ca4da0f88df7c64cba9c1934d6930cc, type: 3}
+    itemModel: {fileID: 0}
+    itemValue: 1
+    itemType: 9
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: Ring
+    itemID: 7
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 59325fb223d6a884ea601d720c136075, type: 3}
+    itemModel: {fileID: 0}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: Hands
+    itemID: 8
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 2ac662c22b865e244b2a9c5b862ce644, type: 3}
+    itemModel: {fileID: 0}
+    itemValue: 1
+    itemType: 11
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: BackPack
+    itemID: 9
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemModel: {fileID: 0}
+    itemValue: 1
+    itemType: 13
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
