@@ -174,6 +174,8 @@ public class ThirdPersonCamera : MonoBehaviour
                     Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
                     player.transform.rotation = (player.transform.rotation * deltaRotation);
 
+                    Debug.Log(rotationAmount.x);
+
                     //Move the camera to FPV
                     targetPosition = firstPersonCamPos.xForm.position;
 
